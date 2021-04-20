@@ -20,11 +20,17 @@ router.get('/diseases', (request, response) => {
     const start_date = request.query.start_date;
     const end_date = request.query.end_date;
     const keyterms = request.query.keyterms;
+    const location = request.query.location;
+    if (keyterms === "") {
+      keyterms = undefined;
+    } else if (location === "") {
+      location = undefined;
+    }
     const outbreakAPI = new OutbreakAPI(
         start_date,
         end_date,
         keyterms,
-        undefined
+        location
     );
     const result = myfunc(start_date, end_date, keyterms, undefined);
     result.then(function (res) {
