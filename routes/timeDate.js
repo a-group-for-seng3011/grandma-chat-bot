@@ -8,8 +8,8 @@ router.get('/', (request, response) => {
   const end_date = request.query;
   const keyterms = request.query;
   const token = request.query;
-  
-  const userDateInTimezone = axios.get(`https://disease-reports-api.herokuapp.com/diseases/?start_date=${start_date}&end_date=${end_date}&keyterms=${keyterms}&token=${token}`)
+  let url = `https://disease-reports-api.herokuapp.com/diseases/?start_date=${start_date}&end_date=${end_date}&keyterms=${keyterms}&token=${token}`;
+  const userDateInTimezone = axios.get(url)
     .then(function (response) {
       console.log(response);
     })
