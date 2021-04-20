@@ -65,7 +65,7 @@ router.get('/diseases', (request, response) => {
         response.json({
             set_attributes: {
                 urlLength: urls.length,
-                sy
+                symptomsLength: symptoms.length,
                 urls: s1,
                 symptoms: s2,
             },
