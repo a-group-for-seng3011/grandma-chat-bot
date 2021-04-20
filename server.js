@@ -34,6 +34,8 @@ app.use('/verify', verificationRoutes);
 
 app.use('/diseases', diseaseRoutes);
 
+console.log("where are we?");
+
 // Start the server and listen for incoming requests
 const listener = app.listen(process.env.PORT, function() {
     console.log('Your app is listening on port ' + listener.address().port);

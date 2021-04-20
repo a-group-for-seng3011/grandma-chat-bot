@@ -3,8 +3,8 @@ const axios = require('axios');
 const OutbreakAPI = require('../services/outbreak-api');
 
 const router = express.Router();
-
 router.get('/', (request, response) => {
+    console.log('hey');
     const start_date = request.query;
     const end_date = request.query;
     const keyterms = request.query;
@@ -12,12 +12,10 @@ router.get('/', (request, response) => {
     const outbreakAPI = new OutbreakAPI(
         start_date,
         end_date,
-        'Coronavirus',
+        keyterms,
         undefined
     );
     const articles = outbreakAPI.getArticles();
-    console.log('hey');
-    console.log(articles);
     const userAttributes = {
         set_attributes: articles,
     };
