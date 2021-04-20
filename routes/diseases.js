@@ -27,17 +27,12 @@ router.get('/diseases', (request, response) => {
         undefined
     );
     const result = myfunc(start_date, end_date, keyterms, undefined);
-    const userAttributes = {
-        set_attributes: {
-            articles: result,
-        }
-    };
-    result.then(function (result) {
+    result.then(function (res) {
         response.json({
-        set_attributes: {
-            articles: result,
-        }
-    });
+            set_attributes: {
+                articles: res,
+            }
+        });
     });
 });
 
