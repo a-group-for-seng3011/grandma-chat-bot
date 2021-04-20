@@ -67,8 +67,7 @@ router.get('/diseases', (request, response) => {
                 urlLength: url_list.length,
                 symptomsLength: symptoms.length,
                 urls: s1,
-                main_text: url_list[]
-                // urls: {url: url_list[0], title: res[0].headline},
+                main_text: res[0].main_text,
                 symptoms: s2,
             },
         });
