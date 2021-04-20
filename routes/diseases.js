@@ -12,7 +12,6 @@ async function myfunc(start_date, end_date, keyterms, undefined) {
         undefined
     );
     const articles = await outbreakAPI.getArticles();
-    console.log(articles);
     return articles;
 }
 
@@ -28,13 +27,15 @@ router.get('/diseases', (request, response) => {
         undefined
     );
     const articles = outbreakAPI.getArticles();
+    const result = myfunc(start_date, end_date, keyterms, undefined);
+    console.log(result);
     const userAttributes = {
         set_attributes: {
-            articles: myfunc(start_date, end_date, keyterms, undefined),
-        },
+            articles: result,
+        }
     };
-
-    response.json(userAttributes);
+    result.then(response.send.bind(res))
+    response.json(userAttributes.set_attributes);
 });
 
 module.exports = router;
