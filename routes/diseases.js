@@ -90,7 +90,7 @@ router.get('/diseases', (request, response) => {
         });
         res_copy = res;
 
-        console.log(res_copy);
+        console.log(res_copy);  
     });
 });
 
