@@ -35,7 +35,7 @@ router.get('/diseases', (request, response) => {
     );
     const result = myfunc(start_date, end_date, keyterms, undefined);
     var urls = [];
-    var symptoms = "";
+    var symptoms = '';
     result.then(function(res) {
         for (var i = 0; i < res.length; i++) {
             var r = res[i].reports;
@@ -46,10 +46,11 @@ router.get('/diseases', (request, response) => {
             }
             urls.push(res[i].url);
         }
+        var string = symptoms.join(' ');
         response.json({
             set_attributes: {
                 urls: urls,
-                symptoms: symptoms.join(' '),
+                symptoms: symptoms,
             },
         });
         res_copy = res;
