@@ -3,6 +3,7 @@
 const express = require('express');
 const axios = require('axios');
 const OutbreakAPI = require('../services/outbreak-api');
+let res_copy;
 
 async function myfunc(start_date, end_date, keyterms, undefined) {
     const outbreakAPI = new OutbreakAPI(
@@ -34,12 +35,13 @@ router.get('/diseases', (request, response) => {
     );
     const result = myfunc(start_date, end_date, keyterms, undefined);
     result.then(function (res) {
+        res_copy = res;
         response.json({
-            set_attributes: {
-                articles: res,
-            }
+            set_attributes: res,
         });
     });
 });
+
+console.log(res_copy);
 
 module.exports = router;
