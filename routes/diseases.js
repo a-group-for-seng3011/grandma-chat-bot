@@ -38,14 +38,19 @@ router.get('/diseases', (request, response) => {
     var symptoms = [];
     result.then(function(res) {
         for (var i = 0; i < res.length; i++) {
-          var r = res[i].reports;
-          for (var j = 0; j < r.length; j++) {
-            symptoms.push(r[j].syndromes);
-          }
+            var r = res[i].reports;
+            for (var j = 0; j < r.length; j++) {
+                if (r[j].syndromes.length !== 0) {
+                    symptoms.push(r[j].syndromes);
+                }
+            }
             urls.push(res[i].url);
         }
         response.json({
-            set_attributes: res[0],
+            set_attributes: {
+                urls: urls,
+                symptoms: symptoms,
+            },
         });
         res_copy = res;
 
