@@ -57,6 +57,11 @@ router.get('/diseases', (request, response) => {
         var s1 = '';
         if (url_list.length > 5) {
             s1 = url_list.slice(0, 5).join('\n');
+            url1 = url_list[0];
+            url2 = url_list[1];
+            url3 = url_list[2];
+            url4 = url_list[3];
+            url5 = url_list[4];
         } else {
             s1 = url_list.join('\n');
         }
