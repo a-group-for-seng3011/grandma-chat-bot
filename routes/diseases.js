@@ -38,8 +38,10 @@ router.get('/diseases', (request, response) => {
     let symptoms = [];
     let datePu = [];
     result.then(function(res) {
+         // console.log(res);
         const sortedActivities = res.sort(
-            (a, b) => b.date_of_publication.date - a.date_of_publication.date
+            (a, b) => Date(Date.parse(b.date_of_publication)) - Date(Date.parse(a.date_of_publication))
+          // new Date(Date.parse('01-01-1970 01:03:44'))
         );
         for (var i = 0; i < sortedActivities.length; i++) {
             var r = sortedActivities[i].reports;
