@@ -36,22 +36,28 @@ router.get('/diseases', (request, response) => {
     const result = myfunc(start_date, end_date, keyterms, undefined);
     let urls = [];
     let symptoms = [];
+    let datePu = [];
     result.then(function(res) {
-        for (var i = 0; i < res.length; i++) {
-            var r = res[i].reports;
+        const sortedActivities = res.sort(
+            (a, b) => b.date_of_publication.date - a.date_of_publication.date
+        );
+        for (var i = 0; i < sortedActivities.length; i++) {
+            var r = sortedActivities[i].reports;
             for (var j = 0; j < r.length; j++) {
                 if (r[j].syndromes.length !== 0) {
                     symptoms.push(r[j].syndromes);
                 }
             }
-            urls.push(res[i].url);
+            urls.push(sortedActivities[i].url);
+            datePu.push(sortedActivities[i].date_of_publication);
         }
-        var s1 = urls.join("\n");
+        var s1 = urls.join('\n');
         var s2 = symptoms.join(',');
         response.json({
             set_attributes: {
                 urls: s1,
                 symptoms: s2,
+                datePu: datePu,
             },
         });
         res_copy = res;
