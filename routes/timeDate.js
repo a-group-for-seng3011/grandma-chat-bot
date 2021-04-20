@@ -1,4 +1,5 @@
 const express = require('express');
+const express = require('axios');
 
 const router = express.Router();
 
@@ -13,9 +14,18 @@ const getUserDateInTimezone = offsetInHours => {
 };
 
 router.get('/', (request, response) => {
-  const {timezone = 0} = request.query;
+  const start_date = request.query;
+  const end_date = request.query;
+  const keyterms = request.query;
+  const token = request.query;
   
-  const userDateInTimezone = getUserDateInTimezone(timezone);
+  const userDateInTimezone = axios.get(`https://disease-reports-api.herokuapp.com/diseases/?start_date=${start_date}&end_date=${end_date}&keyterms=${keyterms}&token=${token}`)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   
   const dateObject = {
     day: userDateInTimezone.getDate(),
@@ -28,7 +38,7 @@ router.get('/', (request, response) => {
   };
     
   const userAttributes = {
-    set_attributes: dateObject
+    set_attributes: userDateInTimezone
   };
   
   response.json(userAttributes);
