@@ -27,9 +27,9 @@ module.exports = class OutbreakAPI {
         }
         // Send the HTTP request to the Outbreak API
         try {
-            console.log(config.outbreakUrl);
             const response = await axios.get(config.outbreakUrl, { params });
-            return response.data;
+            // console.log(response.data.Reports);
+            return response.data.Reports;
         } catch (error) {
             console.log(error);
             return "error!"
