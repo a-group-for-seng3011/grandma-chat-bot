@@ -4,7 +4,7 @@ const app = express();
 
 const webviewRoutes = require('./routes/webviews');
 const verificationRoutes = require('./routes/verification');
-const timeDateRoutes = require('./routes/diseases');
+const diseaseRoutes = require('./routes/diseases');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -32,7 +32,7 @@ app.use('/webviews', webviewRoutes);
 // Add verification routes
 app.use('/verify', verificationRoutes);
 
-app.use('/diseases', timeDateRoutes);
+app.use('/diseases', diseaseRoutes);
 
 // Start the server and listen for incoming requests
 const listener = app.listen(process.env.PORT, function() {

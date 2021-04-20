@@ -16,6 +16,7 @@ router.get('/', (request, response) => {
         undefined
     );
     const articles = outbreakAPI.getArticles();
+    console.log('hey');
     console.log(articles);
     const userAttributes = {
         set_attributes: articles,
