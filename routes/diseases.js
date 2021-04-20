@@ -50,7 +50,7 @@ router.get('/diseases', (request, response) => {
         response.json({
             set_attributes: {
                 urls: urls,
-                symptoms: symptoms,
+                symptoms: string,
             },
         });
         res_copy = res;
