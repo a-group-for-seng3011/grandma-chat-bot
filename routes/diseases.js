@@ -26,7 +26,8 @@ router.get('/diseases', (request, response) => {
     const location = request.query.location;
     if (keyterms === '') {
         keyterms = undefined;
-    } else if (location === '') {
+    }
+    if (location === '') {
         location = undefined;
     }
     const outbreakAPI = new OutbreakAPI(
