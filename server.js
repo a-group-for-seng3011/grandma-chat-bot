@@ -13,19 +13,12 @@ app.set('views', './views');
 
 // GET endpoint
 app.get('/', function(request, response) {
-    response.send('OK');
+    response.send('Hi, welcome to our home page.');
 });
 
-app.get('/diseases', function(request, response) {
-    // const outbreakAPI = new OutbreakAPI(
-    //     request.start_date,
-    //     request.end_date,
-    //     request.keyterms,
-    //     undefined
-    // );
-    // const articles = outbreakAPI.getSortedArticles();
-    // response.send('where are the diseases?');
-    response.send(request.params);
+app.use('/diseases', diseaseRoutes);
+app.get('/diseases', function(request, response, next) {
+    next();
 });
 
 app.post('/attributes/reset', (request, response) => {
@@ -44,9 +37,6 @@ app.use('/webviews', webviewRoutes);
 // Add verification routes
 app.use('/verify', verificationRoutes);
 
-app.use('/diseases', diseaseRoutes);
-
-console.log('where are we?');
 
 // Start the server and listen for incoming requests
 const listener = app.listen(process.env.PORT, function() {

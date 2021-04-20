@@ -7,8 +7,8 @@ const axios = require("axios"),
 module.exports = class OutbreakAPI {
 
     // Set positional parameters to undefined for the default values
-    constructor(start_date="0001-01-01T00:00:00",
-        end_date="2099-12-31T23:59:59",
+    constructor(start_date="2001-01-01T00:00:00",
+        end_date="2020-12-31T23:59:59",
         keyterms,
         location) {
             this.start_date = start_date;
@@ -27,9 +27,9 @@ module.exports = class OutbreakAPI {
         }
         // Send the HTTP request to the Outbreak API
         try {
+            console.log(config.outbreakUrl);
             const response = await axios.get(config.outbreakUrl, { params });
-            console.log(response);
-            return response.data.Reports;
+            return response.data;
         } catch (error) {
             console.log(error);
             return "error!"
