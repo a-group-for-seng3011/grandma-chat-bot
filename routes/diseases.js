@@ -36,7 +36,7 @@ router.get('/diseases', (request, response) => {
         location
     );
     const result = myfunc(start_date, end_date, keyterms, undefined);
-    let urls = [];
+    let url_list = [];
     let symptoms = [];
     result.then(function(res) {
         const sortedActivities = res.sort(
@@ -52,22 +52,22 @@ router.get('/diseases', (request, response) => {
                     symptoms.push(r[j].syndromes);
                 }
             }
-            urls.push(sortedActivities[i].url);
+            url_list.push(sortedActivities[i].url);
         }
         var s1 = '';
-        if (urls.length > 5) {
-            s1 = urls.slice(0, 5).join('\n');
+        if (url_list.length > 5) {
+            s1 = url_list.slice(0, 5).join('\n');
         } else {
-            s1 = urls.join('\n');
+            s1 = url_list.join('\n');
         }
         var removeDup = removeDuplicates(symptoms);
         var s2 = removeDup.join(',');
         response.json({
             set_attributes: {
-                urlLength: urls.length,
+                urlLength: url_list.length,
                 symptomsLength: symptoms.length,
                 // urls: s1,
-                urls: urls,
+                urls: {url: url_list[0], title: res[0].headline},
                 symptoms: s2,
             },
         });
