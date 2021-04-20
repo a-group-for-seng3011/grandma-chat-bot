@@ -26,16 +26,15 @@ router.get('/diseases', (request, response) => {
         keyterms,
         undefined
     );
-    const articles = outbreakAPI.getArticles();
     const result = myfunc(start_date, end_date, keyterms, undefined);
-    console.log(result);
     const userAttributes = {
         set_attributes: {
             articles: result,
         }
     };
-    result.then(response.send.bind(res))
-    response.json(userAttributes.set_attributes);
+    result.then(function (userAttributes) {
+        response.json(userAttributes);
+    });
 });
 
 module.exports = router;
