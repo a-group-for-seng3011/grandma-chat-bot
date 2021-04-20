@@ -57,11 +57,6 @@ router.get('/diseases', (request, response) => {
         var s1 = '';
         if (url_list.length > 5) {
             s1 = url_list.slice(0, 5).join('\n');
-            url1 = url_list[0];
-            url2 = url_list[1];
-            url3 = url_list[2];
-            url4 = url_list[3];
-            url5 = url_list[4];
         } else {
             s1 = url_list.join('\n');
         }
@@ -71,21 +66,21 @@ router.get('/diseases', (request, response) => {
             set_attributes: {
                 urlLength: url_list.length,
                 symptomsLength: symptoms.length,
-                url1: url_list[0],
-                url2: url_list[1],
-                url3: url_list[2],
-                url4: url_list[3],
-                url5: url_list[4],
-                headline1: sortedActivities[0].headline,
-                headline2: sortedActivities[1].headline,
-                headline3: sortedActivities[2].headline,
-                headline4: sortedActivities[3].headline,
-                headline5: sortedActivities[4].headline,
-                main_text1: sortedActivities[0].main_text,
-                main_text2: sortedActivities[1].main_text,
-                main_text3: sortedActivities[2].main_text,
-                main_text4: sortedActivities[3].main_text,
-                main_text5: sortedActivities[4].main_text,
+                url1: url_list[0] || '',
+                url2: url_list[1] || '',
+                url3: url_list[2] || '',
+                url4: url_list[3] || '',
+                url5: url_list[4] || '',
+                headline1: sortedActivities[0].headline || '',
+                headline2: sortedActivities[1].headline || '',
+                headline3: sortedActivities[2].headline || '',
+                headline4: sortedActivities[3].headline || '',
+                headline5: sortedActivities[4].headline || '',
+                main_text1: sortedActivities[0].main_text || '',
+                main_text2: sortedActivities[1].main_text || '',
+                main_text3: sortedActivities[2].main_text || '',
+                main_text4: sortedActivities[3].main_text || '',
+                main_text5: sortedActivities[4].main_text || '',
                 
                 urls: s1,
                 main_text: res[0].main_text,
