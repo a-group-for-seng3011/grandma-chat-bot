@@ -1,4 +1,5 @@
 dependencies:
+  axios: 0.21.1
   body-parser: 1.18.3
   chatfuel-broadcast: 1.1.0
   express: 4.16.4
@@ -94,6 +95,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ReZxvNHIOv88FlT7rxcXIIC0fPt4KZqZbOlivyWtXLt8ESx84zd3kMC6iK5jVeS2qt+g7ftS7ye4fi06X5rtRQ==
+  /axios/0.21.1:
+    dependencies:
+      follow-redirects: 1.13.3
+    dev: false
+    resolution:
+      integrity: sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
   /babel-runtime/6.26.0:
     dependencies:
       core-js: 2.6.5
@@ -422,6 +429,12 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-Y1GUDo39ez4aHAw7MysnUD5JzYX+WaIj8I57kO3aEPT1fFRL4sr7mjei97FgnwhAyyzRYmQZaTHb2+9uZ1dPtg==
+  /follow-redirects/1.13.3:
+    dev: false
+    engines:
+      node: '>=4.0'
+    resolution:
+      integrity: sha512-DUgl6+HDzB0iEptNQEXLx/KhTmDb8tZUHSeLqpnjpknR70H0nC2t9N73BK6fN4hOvJ84pKlIQVQ4k5FFlBedKA==
   /forever-agent/0.6.1:
     dev: false
     resolution:
@@ -1191,6 +1204,7 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
+  axios: ^0.21.1
   body-parser: ^1.18.3
   chatfuel-broadcast: ^1.0.0
   express: ^4.16.4

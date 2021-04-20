@@ -3,16 +3,6 @@ const express = require('axios');
 
 const router = express.Router();
 
-const ONE_HOUR_IN_MILLISECONDS = 60 * 60 * 1000;
-
-const getUserDateInTimezone = offsetInHours => {
-  const utcDate = Date.now();
-  
-  const offsetInMilliseconds = ONE_HOUR_IN_MILLISECONDS * offsetInHours;
-  
-  return new Date(utcDate + offsetInMilliseconds);
-};
-
 router.get('/', (request, response) => {
   const start_date = request.query;
   const end_date = request.query;
