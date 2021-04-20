@@ -2,6 +2,7 @@ dependencies:
   axios: 0.21.1
   body-parser: 1.18.3
   chatfuel-broadcast: 1.1.0
+  dotenv: 8.2.0
   express: 4.16.4
   pug: 2.0.3
 packages:
@@ -321,6 +322,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-6oCxBqh1OHdOijpKWv4pPeSJ4Kk=
+  /dotenv/8.2.0:
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
   /ecc-jsbn/0.1.2:
     dependencies:
       jsbn: 0.1.1
@@ -1207,5 +1214,6 @@ specifiers:
   axios: ^0.21.1
   body-parser: ^1.18.3
   chatfuel-broadcast: ^1.0.0
+  dotenv: ^8.2.0
   express: ^4.16.4
   pug: ^2.0.3
