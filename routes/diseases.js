@@ -66,8 +66,9 @@ router.get('/diseases', (request, response) => {
             set_attributes: {
                 urlLength: url_list.length,
                 symptomsLength: symptoms.length,
-                // urls: s1,
-                urls: {url: url_list[0], title: res[0].headline},
+                urls: s1,
+                main_text: url_list[]
+                // urls: {url: url_list[0], title: res[0].headline},
                 symptoms: s2,
             },
         });
