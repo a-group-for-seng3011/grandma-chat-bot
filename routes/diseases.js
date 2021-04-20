@@ -38,10 +38,11 @@ router.get('/diseases', (request, response) => {
     let symptoms = [];
     let datePu = [];
     result.then(function(res) {
-         // console.log(res);
         const sortedActivities = res.sort(
-            (a, b) => Date(Date.parse(b.date_of_publication)) - Date(Date.parse(a.date_of_publication))
-          // new Date(Date.parse('01-01-1970 01:03:44'))
+            (a, b) =>
+                new Date(Date.parse(b.date_of_publication)) -
+                new Date(Date.parse(a.date_of_publication))
+            // new Date(Date.parse('01-01-1970 01:03:44'))
         );
         for (var i = 0; i < sortedActivities.length; i++) {
             var r = sortedActivities[i].reports;
@@ -53,7 +54,13 @@ router.get('/diseases', (request, response) => {
             urls.push(sortedActivities[i].url);
             datePu.push(sortedActivities[i].date_of_publication);
         }
-        var s1 = urls.join('\n');
+        var s1 = '';
+        if (urls.length > 5) {
+            s1 = urls.slice(0, 5).join('\n');
+        } else {
+            s1 = urls.join('\n');
+        }
+
         var s2 = symptoms.join(',');
         response.json({
             set_attributes: {
