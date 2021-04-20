@@ -17,9 +17,15 @@ app.get('/', function(request, response) {
 });
 
 app.get('/diseases', function(request, response) {
+    // const outbreakAPI = new OutbreakAPI(
+    //     request.start_date,
+    //     request.end_date,
+    //     request.keyterms,
+    //     undefined
+    // );
+    // const articles = outbreakAPI.getSortedArticles();
     // response.send('where are the diseases?');
-    // response.send(response);
-    console.log('hey');
+    response.send(request.params);
 });
 
 app.post('/attributes/reset', (request, response) => {

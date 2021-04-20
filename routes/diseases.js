@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require('express');
 const axios = require('axios');
 const OutbreakAPI = require('../services/outbreak-api');
@@ -9,10 +11,8 @@ async function myfunc(start_date, end_date, keyterms, undefined) {
         keyterms,
         undefined
     );
-    const articles = await outbreakAPI.getSortedArticles();
-    // console.log(typeof(articles));
-    console.log(articles);
-    return articles;
+    return articles = await outbreakAPI.getSortedArticles();
+    // return articles;
 }
 
 const router = express.Router();
