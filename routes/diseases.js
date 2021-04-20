@@ -15,7 +15,9 @@ async function myfunc(start_date, end_date, keyterms, undefined) {
     const articles = await outbreakAPI.getArticles();
     return articles;
 }
-
+function removeDuplicates(data) {
+  return data.filter((value, index) => data.indexOf(value) === index);
+}
 const router = express.Router();
 router.get('/diseases', (request, response) => {
     const start_date = request.query.start_date;
@@ -36,7 +38,6 @@ router.get('/diseases', (request, response) => {
     const result = myfunc(start_date, end_date, keyterms, undefined);
     let urls = [];
     let symptoms = [];
-    let datePu = [];
     result.then(function(res) {
         const sortedActivities = res.sort(
             (a, b) =>
@@ -52,7 +53,6 @@ router.get('/diseases', (request, response) => {
                 }
             }
             urls.push(sortedActivities[i].url);
-            datePu.push(sortedActivities[i].date_of_publication);
         }
         var s1 = '';
         if (urls.length > 5) {
@@ -60,13 +60,12 @@ router.get('/diseases', (request, response) => {
         } else {
             s1 = urls.join('\n');
         }
-
-        var s2 = symptoms.join(',');
+        var removeDup = removeDuplicates(symptoms);
+        var s2 = removeDup.join(',');
         response.json({
             set_attributes: {
                 urls: s1,
                 symptoms: s2,
-                datePu: datePu,
             },
         });
         res_copy = res;
