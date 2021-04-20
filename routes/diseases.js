@@ -64,6 +64,8 @@ router.get('/diseases', (request, response) => {
         var s2 = removeDup.join(',');
         response.json({
             set_attributes: {
+                urlLength: urls.length,
+                sy
                 urls: s1,
                 symptoms: s2,
             },
