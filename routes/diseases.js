@@ -32,8 +32,12 @@ router.get('/diseases', (request, response) => {
             articles: result,
         }
     };
-    result.then(function (userAttributes) {
-        response.json(userAttributes);
+    result.then(function (result) {
+        response.json({
+        set_attributes: {
+            articles: result,
+        }
+    });
     });
 });
 
