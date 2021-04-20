@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const express = require('express');
 const axios = require('axios');
@@ -22,10 +22,10 @@ router.get('/diseases', (request, response) => {
     const end_date = request.query.end_date;
     const keyterms = request.query.keyterms;
     const location = request.query.location;
-    if (keyterms === "") {
-      keyterms = undefined;
-    } else if (location === "") {
-      location = undefined;
+    if (keyterms === '') {
+        keyterms = undefined;
+    } else if (location === '') {
+        location = undefined;
     }
     const outbreakAPI = new OutbreakAPI(
         start_date,
@@ -34,14 +34,23 @@ router.get('/diseases', (request, response) => {
         location
     );
     const result = myfunc(start_date, end_date, keyterms, undefined);
-    result.then(function (res) {
-        res_copy = res;
+    var urls = [];
+    var symptoms = [];
+    result.then(function(res) {
+        for (var i = 0; i < res.length; i++) {
+          var r = res[i].reports;
+          for (var j = 0; j < r.length; j++) {
+            symptoms.push(r[j].syndromes);
+          }
+            urls.push(res[i].url);
+        }
         response.json({
-            set_attributes: res,
+            set_attributes: res[0],
         });
+        res_copy = res;
+
+        console.log(res_copy);
     });
 });
-
-console.log(res_copy);
 
 module.exports = router;
