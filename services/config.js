@@ -41,9 +41,6 @@ module.exports = {
   // URL of your app domain
   appUrl: process.env.APP_URL,
 
-  // URL of your website
-  shopUrl: process.env.SHOP_URL,
-
   // Outbreak API
   outbreakUrl: process.env.OUTBREAK_URL,
   outbreakToken: process.env.OUTBREAK_TOKEN,
