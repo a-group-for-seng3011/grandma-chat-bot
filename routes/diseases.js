@@ -5,12 +5,12 @@ const axios = require('axios');
 const OutbreakAPI = require('../services/outbreak-api');
 let res_copy;
 
-async function myfunc(start_date, end_date, keyterms, undefined) {
+async function myfunc(start_date, end_date, keyterms, location) {
     const outbreakAPI = new OutbreakAPI(
         start_date,
         end_date,
         keyterms,
-        undefined
+        location
     );
     const articles = await outbreakAPI.getArticles();
     return articles;
@@ -35,7 +35,7 @@ router.get('/diseases', (request, response) => {
         keyterms,
         location
     );
-    const result = myfunc(start_date, end_date, keyterms, undefined);
+    const result = myfunc(start_date, end_date, keyterms, location);
     let url_list = [];
     let symptoms = [];
     result.then(function(res) {
