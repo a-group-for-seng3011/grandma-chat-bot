@@ -29,10 +29,10 @@ module.exports = class OutbreakAPI {
         try {
             const response = await axios.get(config.outbreakUrl, { params });
             console.log(response);
-
             return response.data.Reports;
         } catch (error) {
             console.log(error);
+            return "error!"
         }
     }
 

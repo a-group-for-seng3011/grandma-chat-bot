@@ -16,6 +16,12 @@ app.get('/', function(request, response) {
     response.send('OK');
 });
 
+app.get('/diseases', function(request, response) {
+    // response.send('where are the diseases?');
+    // response.send(response);
+    console.log('hey');
+});
+
 app.post('/attributes/reset', (request, response) => {
     const keyNames = Object.keys(request.body);
 
@@ -34,7 +40,7 @@ app.use('/verify', verificationRoutes);
 
 app.use('/diseases', diseaseRoutes);
 
-console.log("where are we?");
+console.log('where are we?');
 
 // Start the server and listen for incoming requests
 const listener = app.listen(process.env.PORT, function() {
