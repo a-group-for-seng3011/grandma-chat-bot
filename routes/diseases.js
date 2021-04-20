@@ -16,7 +16,7 @@ async function myfunc(start_date, end_date, keyterms, undefined) {
 }
 
 const router = express.Router();
-router.get('/diseases', (request, response) => {
+router.get('/', (request, response) => {
     const start_date = request.query;
     const end_date = request.query;
     const keyterms = request.query;
