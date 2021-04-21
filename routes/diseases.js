@@ -55,43 +55,29 @@ router.get('/diseases', (request, response) => {
             }
             url_list.push(sortedActivities[i].url);
         }
-        var s1 = '';
-        var headline1 = "";
-        var headline2 = "";
-        var headline3 = "";
-        //UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'headline' of undefined
-        var headline4 = "";
-        var headline5 = "";
-        if (url_list.length > 5) {
-            s1 = url_list.slice(0, 5).join('\n');
-            headline1 = sortedActivities[0].headline;
-            headline2 = sortedActivities[1].headline;
-            headline3 = sortedActivities[2].headline;
-            headline4 = sortedActivities[3].headline;
-            headline5 = sortedActivities[4].headline;
-        } else {
-            s1 = url_list.join('\n');
-        }
+        // var s1 = '';
+        // if (url_list.length > 5) {
+        //     s1 = url_list.slice(0, 5).join('\n');
+        // } else {
+        //     s1 = url_list.join('\n');
+        // }
         var removeDup = removeDuplicates(symptoms);
         var s2 = removeDup.join(',');
-        // var headline1 = sortedActivities[0].headline || '';
         
         response.json({
             set_attributes: {
                 urlLength: url_list.length,
                 symptomsLength: symptoms.length,
-                url1: url_list[0] || '',
-                url2: url_list[1] || '',
-                url3: url_list[2] || '',
-                url4: url_list[3] || '',
-                url5: url_list[4] || '',
-                // var x = (x === undefined) ? your_default_value : x;
-              
-                headline1: (sortedActivities[0].headline === undefined) ? "" : sortedActivities[0].headline,
-                headline2: headline2,
-                headline3: headline3,
-                headline4: headline4,
-                headline5: headline5,
+                url1: (url_list[0] === undefined) ? "" :url_list[0],
+                url2: (url_list[1] === undefined) ? "" :url_list[1],
+                url3: (url_list[2] === undefined) ? "" :url_list[2],
+                url4: (url_list[3] === undefined) ? "" :url_list[3],
+                url5: (url_list[4] === undefined) ? "" :url_list[4],
+                headline1: (sortedActivities[0] === undefined) ? "" : sortedActivities[0].headline,
+                headline2: (sortedActivities[1] === undefined) ? "" : sortedActivities[1].headline,
+                headline3: (sortedActivities[2] === undefined) ? "" : sortedActivities[2].headline,
+                headline4: (sortedActivities[3] === undefined) ? "" : sortedActivities[3].headline,
+                headline5: (sortedActivities[4] === undefined) ? "" : sortedActivities[4].headline,
                 // main_text1: sortedActivities[0].main_text || '',
                 // main_text2: sortedActivities[1].main_text || '',
                 // main_text3: sortedActivities[2].main_text || '',
