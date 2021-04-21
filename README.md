@@ -1,9 +1,8 @@
-# Chatfuel Demo Bot
+# Grandma Chat Bot
 
+The repository is the backend application that maintains our API endpoints to Grandma bot.
+You can see it as a middleware between the Chatfuel and the collection of external APIs 
+that we use to gather information.
 
-Hello! I'm Marc and I make lots of videos to help people to learn how to integrate APIs with Chatfuel. You can find [all of my videos here](https://www.youtube.com/playlist?list=PLDvWRKT9Cd2g-L4_hStYOcmOfTF87U8FM).
-
-I'll add new API endpoints to this bot as part of my video series.
-
-## Endpoints
-
+It is hosted on Glitch with a monthly premium plan that enables unlimited user access and 
+ensures the endpoints are always on. 
